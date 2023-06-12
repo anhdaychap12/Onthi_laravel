@@ -12,8 +12,8 @@
             <input type="number" class="form-control" id="age" name="age">
         </div>
         <div class="mb-3">
-            <label for="address" class="form-label">Address:</label>
-            <input type="text" class="form-control" id="address" name="address">
+            <label for="MSSV" class="form-label">MSSV:</label>
+            <input type="text" class="form-control" id="MSSV" name="MSSV">
         </div>
         <button type="submit" class="btn btn-primary">Confirm</button>
     </form>

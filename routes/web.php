@@ -22,4 +22,14 @@ Route::get('/admin/', function(){
     return view('admin.index', ['title'=>'Trang chủ']);
 });
 
-Route::get('/admin/sinhvien/list', [SinhvienController::class, 'index']);
+Route::prefix('admin')->group(function () {
+    Route::get('home', function () {
+       return view('admin.index', ['title' => 'Trang chủ']); 
+    });
+    Route::prefix('sinhvien')->group(function () {
+       Route::get('list', [SinhvienController::class, 'index']);
+       Route::get('add', [SinhvienController::class, 'PostAdd']);
+       Route::post('add/store', [SinhvienController::class, 'Add']);
+       Route::get('edit/{id}', [SinhvienController::class, 'PostEdit']); 
+    });
+});
