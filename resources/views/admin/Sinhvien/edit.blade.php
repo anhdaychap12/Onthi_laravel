@@ -1,6 +1,7 @@
 @extends('admin.index')
 @section('content')
-    <form method="POST" action="add/store">
+    <form method="post" action="/admin/sinhvien/update/{{$sinhvien->id}}">
+        @csrf
         @include('share.error')
         <div class="mb-3">
             <label for="name" class="form-label" >Name:</label>

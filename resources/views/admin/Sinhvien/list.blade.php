@@ -1,5 +1,6 @@
 @extends('admin.index')
 @section('content')
+@include('share.error')
     <table class="table table-striped">
         <thead>
             <tr>
@@ -17,7 +18,7 @@
                 <td>{{$Sinhvien->Name}}</td>
                 <td>{{$Sinhvien->Age}}</td>
                 <td>{{$Sinhvien->MSSV}}</td>
-                <td> <a href="/admin/sinhvien/edit/{{$Sinhvien->id}}" class="btn btn-outline-primary">Edit</a> <a href="" class="btn btn-outline-danger">Delete</a> </td>
+                <td> <a href="/admin/sinhvien/edit/{{$Sinhvien->id}}" class="btn btn-outline-primary">Edit</a> <a href="#" class="btn btn-outline-danger" onclick="Delete({{$Sinhvien->id}}, 'admin/sinhvien/delete')">Delete</a> </td>
               </tr>              
             @endforeach
             

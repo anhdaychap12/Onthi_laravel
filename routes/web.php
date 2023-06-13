@@ -30,6 +30,8 @@ Route::prefix('admin')->group(function () {
        Route::get('list', [SinhvienController::class, 'index']);
        Route::get('add', [SinhvienController::class, 'PostAdd']);
        Route::post('add/store', [SinhvienController::class, 'Add']);
-       Route::get('edit/{id}', [SinhvienController::class, 'PostEdit']); 
+       Route::get('edit/{id}', [SinhvienController::class, 'PostEdit']);
+       Route::post('update/{id}', [SinhvienController::class, 'Edit']);
+       Route::delete('delete', [SinhvienController::class, 'Delete']);
     });
 });

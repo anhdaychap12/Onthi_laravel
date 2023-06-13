@@ -31,4 +31,33 @@ class SinhvienService{
         $sv = sinhvien::all();
         return $sv;
     }
+
+    public function edit($id, $request) {
+        try {
+            $name = $request -> input('name');
+            $age = $request -> input('age');
+            $mssv = $request -> input('MSSV');
+
+            $sv = sinhvien::find($id);
+            $sv -> Name = $name;
+            $sv -> Age = $age;
+            $sv -> MSSV = $mssv;
+            $sv -> save();
+            session()->flash('success', 'Cập nhật sinh viên thành công!');
+        } catch (Exception $ex) {
+            //throw $th;
+            session() ->flash('error', $ex ->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function Delete($id) {
+        $sv = sinhvien::find($id);
+        if ($sv) {
+            session()->flash('success', 'Xóa sinh viên thành công!');
+           return $sv->delete();
+        }
+        session()->flash('error', 'Xóa sinh viên thành công!');
+    }
 }

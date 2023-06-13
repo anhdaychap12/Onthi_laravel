@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddSinhvienRequest;
+use App\Http\Requests\EditSinhvienRequest;
 use App\Http\Service\SinhvienService;
 use App\Models\sinhvien;
 use Illuminate\Http\Request;
@@ -33,5 +34,15 @@ class SinhvienController extends Controller
     public function PostEdit($id) {
         $sv = sinhvien::find($id);
         return view('admin.Sinhvien.edit', ['title' => 'Cập nhật thông tin sinh viên', 'sinhvien' => $sv]);
+    }
+
+    public function Edit($id, EditSinhvienRequest $request) {
+        $rs = $this->sinhvienService->edit($id, $request);
+        return redirect('admin/sinhvien/list');
+    }
+
+    public function Delete(Request $request) {
+        $rs = $this->sinhvienService->Delete($request->id);
+        return redirect()->back();
     }
 }
