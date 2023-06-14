@@ -28,8 +28,7 @@ class SinhvienService{
 
     public function getAll() {
         
-        $sv = sinhvien::all();
-        return $sv;
+        return sinhvien::paginate(2);
     }
 
     public function edit($id, $request) {
@@ -59,5 +58,19 @@ class SinhvienService{
            return $sv->delete();
         }
         session()->flash('error', 'Xóa sinh viên thành công!');
+    }
+
+    public function Search($str) {
+        if(empty($str)){
+            return sinhvien::paginate(2);
+        }
+        else{
+            $sv = sinhvien::where('Name', 'LIKE', '%' . $str. '%')->paginate(2);
+            return $sv;
+        }
+    }
+
+    public function selectPaginate($i) {
+        return sinhvien::paginate($i);
     }
 }

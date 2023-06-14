@@ -45,4 +45,15 @@ class SinhvienController extends Controller
         $rs = $this->sinhvienService->Delete($request->id);
         return redirect()->back();
     }
+
+    public function Search(Request $request) {
+        $str = $request-> input('search-str');
+        return view('admin.Sinhvien.list', ['Sinhviens' => $this->sinhvienService->Search($str), 'title' => 'Danh sách tìm kiếm']);
+    }
+
+    public function SelectPaginate(Request $request) {
+        return view('admin.Sinhvien.list', ['Sinhviens' => $this->sinhvienService->selectPaginate($request->sl), 'title' => 'Danh sách sinh viên']);
+    }
+
+
 }

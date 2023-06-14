@@ -33,5 +33,7 @@ Route::prefix('admin')->group(function () {
        Route::get('edit/{id}', [SinhvienController::class, 'PostEdit']);
        Route::post('update/{id}', [SinhvienController::class, 'Edit']);
        Route::delete('delete', [SinhvienController::class, 'Delete']);
+       Route::get('search', [SinhvienController::class, 'Search']);
+       Route::get('list/{sl}', [SinhvienController::class, 'SelectPaginate']);
     });
 });

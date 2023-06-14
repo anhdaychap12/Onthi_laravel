@@ -1,6 +1,18 @@
 @extends('admin.index')
 @section('content')
 @include('share.error')
+<form method="GET" class="input-group mb-3" action="/admin/sinhvien/search">
+  <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username" aria-describedby="button-addon2" name="search-str">
+  <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+</form>
+
+<select class="form-select" aria-label="Default select example">
+  <option selected>select paginate:</option>
+  <option value="1">2</option>
+  <option value="2">3</option>
+  <option value="3">5</option>
+</select>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -24,9 +36,13 @@
             
           </tbody>
     </table>
-    {{-- <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example">
       <ul class="pagination">
         {{$Sinhviens -> links()}}
       </ul>
-    </nav> --}}
+    </nav>
+
+    <script>
+      
+    </script>
 @endsection
