@@ -51,18 +51,16 @@ class SinhvienService{
         return true;
     }
 
-    public function Delete($id) {
-        $sv = sinhvien::find($id);
-        if ($sv) {
-            session()->flash('success', 'Xóa sinh viên thành công!');
-           return $sv->delete();
+    public function delete($request){
+        $sv = sinhvien::where('id',$request->input('id'))->first();
+        if($sv){
+            return $sv->delete();
         }
-        session()->flash('error', 'Xóa sinh viên thành công!');
     }
 
     public function Search($str) {
         if(empty($str)){
-            return sinhvien::paginate(2);
+            return sinhvien::all();
         }
         else{
             $sv = sinhvien::where('Name', 'LIKE', '%' . $str. '%')->paginate(2);

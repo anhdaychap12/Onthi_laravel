@@ -5,3 +5,4 @@
 <!-- AdminLTE App -->
 <script src="/theme/dist/js/adminlte.min.js"></script>
 <script src="/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>

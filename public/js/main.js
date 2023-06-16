@@ -23,3 +23,26 @@ function Delete(id, url){
         })
     }
 }
+
+function showHint(str) {
+    if (str.length == 0) {
+        $('#goi_y').html("không tìm thấy kết quả tìm kiếm");
+    }
+    else{
+        $.ajax({
+            type: 'POST',
+            datatype:JSON,
+            data:{hint: str},
+            url:'/admin/sinhvien/searchAjax',
+            success:function (result){
+                $('#goi_y').html(result.html);
+            }
+        });
+    }
+}
+
+function selectPage(val) {
+    if (val != 0) {
+        location.href = '/admin/sinhvien/list/'+val;
+    }
+}

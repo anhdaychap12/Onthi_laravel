@@ -41,14 +41,35 @@ class SinhvienController extends Controller
         return redirect('admin/sinhvien/list');
     }
 
-    public function Delete(Request $request) {
-        $rs = $this->sinhvienService->Delete($request->id);
-        return redirect()->back();
+    public function delete(Request $request){
+        $result = $this->sinhvienService->delete($request);
+        if($result){
+            return response()->json([
+               'error'=>'false',
+               'message'=>'Xóa danh mục thành công'
+            ]);
+        }
+        return response()->json([
+            'error'=>'true'
+        ]);
     }
 
     public function Search(Request $request) {
         $str = $request-> input('search-str');
         return view('admin.Sinhvien.list', ['Sinhviens' => $this->sinhvienService->Search($str), 'title' => 'Danh sách tìm kiếm']);
+    }
+
+    public function ajaxSearch(Request $request){
+        $str = $request->hint;
+        $Sinhviens = $this->sinhvienService->Search($str);
+        $html = "<span>";
+        foreach ($Sinhviens as $sinhvien) {
+            $html = $html . $sinhvien->Name . ", ";
+        }
+        $html = $html."</span>";
+
+        return response()->json(['html' => $html]);
+
     }
 
     public function SelectPaginate(Request $request) {
